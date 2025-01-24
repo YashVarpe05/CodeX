@@ -1,7 +1,27 @@
 import React from "react";
 import TeamCard from "@/TiltedCard/TiltedCard";
 import ShinyText from "@/ShinyText/ShinyText";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 const Teamsection = () => {
+	const settings = {
+		dots: false,
+		infinite: true,
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		autoplay: true,
+		speed: 1000,
+		autoplaySpeed: 2000,
+		responsive: [
+			{
+				breakpoint: 768,
+				settings: { slidesToShow: 1 },
+			},
+		],
+	};
+
 	return (
 		<>
 			<div className=" text-center mb-8">
@@ -13,7 +33,7 @@ const Teamsection = () => {
 				/>
 			</div>
 
-			<div className="flex items-center gap-10 ">
+			<Slider {...settings}>
 				<TeamCard
 					imageSrc="https://images.unsplash.com/photo-1737625775722-9214c9cddf97?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D"
 					altText="Kendrick Lamar - GNX Album Cover"
@@ -90,7 +110,7 @@ const Teamsection = () => {
 						</p>
 					}
 				/>
-			</div>
+			</Slider>
 		</>
 	);
 };

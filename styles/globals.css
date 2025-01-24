@@ -1,0 +1,18 @@
+/* Swiper custom styles */
+.swiper {
+  padding: 20px 0 40px;
+}
+
+.swiper-pagination-bullet {
+  background: #ffffff00;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ffffff00;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+}
