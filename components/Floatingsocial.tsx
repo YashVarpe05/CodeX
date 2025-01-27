@@ -7,9 +7,12 @@ import {
 	IconHome,
 	IconBrandInstagram,
 	IconNewSection,
+	IconBrandLinkedin,
 	IconTerminal2,
+	IconBrandGmail,
 } from "@tabler/icons-react";
 import Image from "next/image";
+import { title } from "process";
 
 function FloatingDockDemo() {
 	const links = [
@@ -20,7 +23,20 @@ function FloatingDockDemo() {
 			),
 			href: "#",
 		},
-
+		{
+			title: "Linkedin",
+			icon: (
+				<IconBrandLinkedin className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+			),
+			href: "#",
+		},
+		{
+			title: "Gmail",
+			icon: (
+				<IconBrandGmail className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+			),
+			href: "#",
+		},
 		{
 			title: "Twitter",
 			icon: (
