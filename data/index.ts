@@ -174,29 +174,29 @@ export const companies = [
 export const workExperience = [
 	{
 		id: 1,
-		title: "Frontend Engineer Intern",
-		desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
+		title: "CodeLite Hackathon",
+		desc: "PDEA's College first hackathon with a lots of fun and the unique project submission.",
 		className: "md:col-span-2",
 		thumbnail: "/exp1.svg",
 	},
 	{
 		id: 2,
-		title: "Mobile App Dev - JSM Tech",
-		desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
+		title: "expert session ",
+		desc: " Conducting the expert session in the college on front-end domination.",
 		className: "md:col-span-2", // change to md:col-span-2
 		thumbnail: "/exp2.svg",
 	},
 	{
 		id: 3,
-		title: "Freelance App Dev Project",
-		desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
+		title: "Conducting a mini-Hackathon ",
+		desc: "Conducting the mini hackathon of 8-hour duration.",
 		className: "md:col-span-2", // change to md:col-span-2
 		thumbnail: "/exp3.svg",
 	},
 	{
 		id: 4,
-		title: "Lead Frontend Developer",
-		desc: "Developed and maintained user-facing features using modern frontend technologies.",
+		title: "Backend Development",
+		desc: "tech a how backend work under the hood and how thing goon happen in the backend.",
 		className: "md:col-span-2",
 		thumbnail: "/exp4.svg",
 	},

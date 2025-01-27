@@ -12,6 +12,7 @@ import RecentProjects from "@/components/RecentProjects";
 import { FloatingNav } from "@/components/ui/FloatingNavbar";
 // import {  } from "@/components/LogoTicker";
 import LogoTicker from "@/components/LogoTicker";
+import FloatingSocial from "@/components/Floatingsocial";
 import Teamsection from "@/components/Teamsection";
 const Home = () => {
 	return (
@@ -26,6 +27,7 @@ const Home = () => {
 				{/* <TeamCard /> */}
 				<Teamsection />
 				<Experience />
+
 				<Approach />
 				<Footer />
 			</div>

@@ -42,24 +42,22 @@ const Hero = () => {
 
 			<div className="flex justify-center relative my-20 z-10">
 				<div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
+					{/**
+					 *  Link: https://ui.aceternity.com/components/text-generate-effect
+					 *
+					 *  change md:text-6xl, add more responsive code
+					 */}{" "}
 					<ShinyText
 						text="Code with Codex "
 						disabled={false}
 						speed={3}
 						className="text-lg"
 					/>
-
-					{/**
-					 *  Link: https://ui.aceternity.com/components/text-generate-effect
-					 *
-					 *  change md:text-6xl, add more responsive code
-					 */}
 					<TextGenerateEffect
-						words="{CodeX} Building Tomorrow's Tech Leaders "
+						words="{CodeX} Building Tomorrow's Tech Leaders;_ " //the last underline it should me blinking
 						className="text-center text-[40px] md:text-5xl lg:text-6xl"
 					/>
-
-					<a href="#about">
+					<a href="/about">
 						<MagicButton
 							title="Connect"
 							icon={<FaLocationArrow />}
