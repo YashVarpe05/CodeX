@@ -1,7 +1,7 @@
 "use client";
 
 import { navItems } from "@/data";
-import TeamCard from "@/TiltedCard/TiltedCard";
+import TimeLineEvent from "@/components/TimeLineEvent";
 import Hero from "@/components/Hero";
 import Grid from "@/components/Grid";
 import Footer from "@/components/Footer";
@@ -12,8 +12,10 @@ import RecentProjects from "@/components/RecentProjects";
 import { FloatingNav } from "@/components/ui/FloatingNavbar";
 // import {  } from "@/components/LogoTicker";
 import LogoTicker from "@/components/LogoTicker";
+import FooterMap from "@/components/FooterMap";
 import FloatingSocial from "@/components/Floatingsocial";
 import Teamsection from "@/components/Teamsection";
+import { IconTimelineEvent } from "@tabler/icons-react";
 const Home = () => {
 	return (
 		<main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
@@ -22,10 +24,12 @@ const Home = () => {
 				<Hero />
 				<LogoTicker />
 				<Grid />
+				<TimeLineEvent />
 				{/* <RecentProjects /> */}
 				<Clients />
 				{/* <TeamCard /> */}
 				<Teamsection />
+
 				<Experience />
 
 				<Approach />

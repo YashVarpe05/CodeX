@@ -53,9 +53,9 @@ function FloatingDockDemo() {
 		},
 	];
 	return (
-		<div className="flex items-center justify-center h-[5rem] w-full">
+		<div className="flex items-center justify-center h-[4rem] sm:h-[5rem] w-full">
 			<FloatingDock
-				mobileClassName="translate-y-20" // only for demo, remove for production
+				mobileClassName="translate-y-16 sm:translate-y-20 scale-75 sm:scale-90 md:scale-100"
 				items={links}
 			/>
 		</div>
