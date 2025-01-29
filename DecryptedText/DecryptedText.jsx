@@ -1,4 +1,6 @@
-import { useEffect, useState, useRef } from "react";
+"use client";
+import * as React from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 /**
@@ -17,7 +19,7 @@ import { motion } from "framer-motion";
  * - parentClassName?: string    (applied to the top-level span container)
  * - animateOn?: "view" | "hover"  (default: "hover")
  */
-function DecryptedText({
+const DecryptedText = ({
 	text,
 	speed = 50,
 	maxIterations = 10,
@@ -30,8 +32,11 @@ function DecryptedText({
 	encryptedClassName = "",
 	animateOn = "hover",
 	...props
-}) {
-	const [displayText, setDisplayText] = useState(text || "");
+}) => {
+	// Ensure text has a default value
+	const safeText = text || "";
+
+	const [displayText, setDisplayText] = useState(safeText);
 	const [isHovering, setIsHovering] = useState(false);
 	const [isScrambling, setIsScrambling] = useState(false);
 	const [revealedIndices, setRevealedIndices] = useState(new Set());
@@ -43,7 +48,7 @@ function DecryptedText({
 		let currentIteration = 0;
 
 		const getNextIndex = (revealedSet) => {
-			const textLength = text.length;
+			const textLength = safeText.length;
 			switch (revealDirection) {
 				case "start":
 					return revealedSet.size;
@@ -73,7 +78,7 @@ function DecryptedText({
 		};
 
 		const availableChars = useOriginalCharsOnly
-			? Array.from(new Set(text.split(""))).filter((char) => char !== " ")
+			? Array.from(new Set(safeText.split(""))).filter((char) => char !== " ")
 			: characters.split("");
 
 		const shuffleText = (originalText, currentRevealed) => {
@@ -124,11 +129,11 @@ function DecryptedText({
 			interval = setInterval(() => {
 				setRevealedIndices((prevRevealed) => {
 					if (sequential) {
-						if (prevRevealed.size < text.length) {
+						if (prevRevealed.size < safeText.length) {
 							const nextIndex = getNextIndex(prevRevealed);
 							const newRevealed = new Set(prevRevealed);
 							newRevealed.add(nextIndex);
-							setDisplayText(shuffleText(text, newRevealed));
+							setDisplayText(shuffleText(safeText, newRevealed));
 							return newRevealed;
 						} else {
 							clearInterval(interval);
@@ -136,19 +141,19 @@ function DecryptedText({
 							return prevRevealed;
 						}
 					} else {
-						setDisplayText(shuffleText(text, prevRevealed));
+						setDisplayText(shuffleText(safeText, prevRevealed));
 						currentIteration++;
 						if (currentIteration >= maxIterations) {
 							clearInterval(interval);
 							setIsScrambling(false);
-							setDisplayText(text);
+							setDisplayText(safeText);
 						}
 						return prevRevealed;
 					}
 				});
 			}, speed);
 		} else {
-			setDisplayText(text);
+			setDisplayText(safeText);
 			setRevealedIndices(new Set());
 			setIsScrambling(false);
 		}
@@ -158,7 +163,7 @@ function DecryptedText({
 		};
 	}, [
 		isHovering,
-		text,
+		safeText,
 		speed,
 		maxIterations,
 		sequential,
