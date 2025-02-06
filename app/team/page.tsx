@@ -1,24 +1,55 @@
 "use client";
+
 import { FloatingNav } from "@/components/ui/FloatingNavbar";
 import { navItems } from "@/data";
-import React from "react";
-import TeamCard from "@/components/TeamCard";
-import DecryptedText from "@/DecryptedText/DecryptedText";
-const page = () => {
-	return (
-		<main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
-			<div className="max-w-7xl w-full">
-				<FloatingNav navItems={navItems} />
+import GlowingEffectTeamcard from "@/components/GlowingTeamcard";
+import TimelineDemo from "@/components/TimeLineEvent";
+import InfiniteMenu from "@/InfiniteMenu/InfiniteMenu";
+import GlowingEffectDemoSecond from "@/components/GlowingTeamcard";
+import TeamSection from "@/components/Team";
+import Team from "@/components/Team";
 
-				<div className="grid grid-flow-col  grid-cols-4 grid-rows-1 gap-[10rem]">
-					<TeamCard />
-					<TeamCard />
-					<TeamCard />
-					<TeamCard />
+const TeamPage = () => {
+	return (
+		<>
+			<div className="flex items-center justify-center flex-col">
+				<FloatingNav navItems={navItems} />
+				<h1 className="text-white text-4xl">Team Page</h1>
+				<div className="w-[80vw] h-[80vh] flex overflow-hidden items-center justify-center ">
+					{/* <GlowingEffectDemoSecond /> */}
+					{/* <TeamSection /> */}
+					<Team />
+					<Team />
+					<Team />
+					<Team />
+				</div>
+				<div className="w-[80vw] h-[80vh] flex overflow-hidden items-center justify-center ">
+					{/* <GlowingEffectDemoSecond /> */}
+					{/* <TeamSection /> */}
+					<Team />
+					<Team />
+					<Team />
+					<Team />
+				</div>{" "}
+				<div className="w-[80vw] h-[80vh] flex overflow-hidden items-center justify-center ">
+					{/* <GlowingEffectDemoSecond /> */}
+					{/* <TeamSection /> */}
+					<Team />
+					<Team />
+					<Team />
+					<Team />
+				</div>{" "}
+				<div className="w-[100vw] h-[80vh] flex overflow-hidden items-center justify-center ">
+					{/* <GlowingEffectDemoSecond /> */}
+					{/* <TeamSection /> */}
+					<Team />
+					<Team />
+					<Team />
+					<Team />
 				</div>
 			</div>
-		</main>
+		</>
 	);
 };
 
-export default page;
+export default TeamPage;

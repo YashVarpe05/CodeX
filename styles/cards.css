@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Scope styles only inside the .cards-container */
+.cards-container * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.cards-container {
+    width: 100%;
+    height: 100%;
+}
+
+.cards-container section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: blue;
+}
+
+.cards-container h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    font-size: 5vw;
+    font-weight: lighter;
+    line-height: 100%;
+}
+
+.cards-container .card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 240px;
+    height: 360px;
+    perspective: 1000px;
+}
+
+.cards-container .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.cards-container .flip-card-front,
+.cards-container .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: .8em;
+    overflow: hidden;
+}
+
+.cards-container .flip-card-back {
+    background-color: #fff;
+    transform: rotateY(180deg);
+}
