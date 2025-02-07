@@ -17,13 +17,10 @@ import {
 } from "@react-three/rapier";
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 import { useControls } from "leva";
+
 extend({ MeshLineGeometry, MeshLineMaterial });
-useGLTF.preload(
-	"https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/5huRVDzcoDwnbgrKUo1Lzs/53b6dd7d6b4ffcdbd338fa60265949e1/tag.glb"
-);
-useTexture.preload(
-	"https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/SOT1hmCesOHxEYxL7vkoZ/c57b29c85912047c414311723320c16b/band.jpg"
-);
+useGLTF.preload("/models/adi.glb");
+useTexture.preload("/strip.png");
 
 export default function App() {
 	const { debug } = useControls({ debug: false });
@@ -83,12 +80,8 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 		angularDamping: 2,
 		linearDamping: 2,
 	};
-	const { nodes, materials } = useGLTF(
-		"https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/5huRVDzcoDwnbgrKUo1Lzs/53b6dd7d6b4ffcdbd338fa60265949e1/tag.glb"
-	);
-	const texture = useTexture(
-		"https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/SOT1hmCesOHxEYxL7vkoZ/c57b29c85912047c414311723320c16b/band.jpg"
-	);
+	const { nodes, materials } = useGLTF("/models/adi.glb");
+	const texture = useTexture("/strip.png");
 	const { width, height } = useThree((state) => state.size);
 	const [curve] = useState(
 		() =>
@@ -205,11 +198,13 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 								metalness={0.5}
 							/>
 						</mesh>
-						<mesh
-							geometry={nodes.clip.geometry}
-							material={materials.metal}
-							material-roughness={0.3}
-						/>
+						{nodes.clip && (
+							<mesh
+								geometry={nodes.clip.geometry}
+								material={materials.metal}
+								material-roughness={0.3}
+							/>
+						)}
 						<mesh geometry={nodes.clamp.geometry} material={materials.metal} />
 					</group>
 				</RigidBody>
