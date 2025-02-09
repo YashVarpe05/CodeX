@@ -1,6 +1,12 @@
 "use client";
 import React from "react";
 import { PinContainer } from "@/src/components/ui/3d-pin";
+import { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
+import { RigidBody, BallCollider, CuboidCollider } from "@react-three/rapier";
+import * as THREE from "three";
+import type { TeamMember } from "../data/teamData";
+
 function AnimatedPinDemo() {
 	return (
 		<div className="h-[40rem] w-full flex items-center justify-center ">
@@ -25,6 +31,56 @@ function AnimatedPinDemo() {
 				</div>
 			</PinContainer>
 		</div>
+	);
+}
+
+export function TeamCard({
+	member,
+	position,
+}: {
+	member: TeamMember;
+	position: [number, number, number];
+}) {
+	const band = useRef(),
+		fixed = useRef(),
+		j1 = useRef(),
+		j2 = useRef(),
+		j3 = useRef(),
+		card = useRef();
+	const { nodes, materials } = useGLTF(member.modelPath);
+
+	const segmentProps = {
+		type: "dynamic",
+		canSleep: true,
+		colliders: false,
+		angularDamping: 2,
+		linearDamping: 2,
+	};
+
+	return (
+		<group position={position}>
+			<RigidBody ref={fixed} {...segmentProps} type="fixed" />
+			<RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}>
+				<BallCollider args={[0.1]} />
+			</RigidBody>
+			{/* ...existing physics bodies... */}
+			<RigidBody position={[2, 0, 0]} ref={card} {...segmentProps}>
+				<CuboidCollider args={[0.8, 1.125, 0.01]} />
+				<group scale={2.25} position={[0, -1.2, -0.05]}>
+					<mesh geometry={nodes.card.geometry}>
+						<meshPhysicalMaterial
+							map={materials.base.map}
+							map-anisotropy={16}
+							clearcoat={1}
+							clearcoatRoughness={0.15}
+							roughness={0.3}
+							metalness={0.5}
+						/>
+					</mesh>
+					{/* Add name and role text here if needed */}
+				</group>
+			</RigidBody>
+		</group>
 	);
 }
 
