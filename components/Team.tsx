@@ -19,7 +19,7 @@ import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 import { useControls } from "leva";
 
 extend({ MeshLineGeometry, MeshLineMaterial });
-useGLTF.preload("/models/adi.glb");
+useGLTF.preload("/models/pratik.glb");
 useTexture.preload("/strip.png");
 
 export default function App() {
@@ -80,7 +80,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 		angularDamping: 2,
 		linearDamping: 2,
 	};
-	const { nodes, materials } = useGLTF("/models/adi.glb");
+	const { nodes, materials } = useGLTF("/models/pratik.glb");
 	const texture = useTexture("/strip.png");
 	const { width, height } = useThree((state) => state.size);
 	const [curve] = useState(
