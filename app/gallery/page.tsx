@@ -4,7 +4,7 @@ import { FloatingNav } from "@/components/ui/FloatingNavbar";
 import { navItems } from "@/data";
 
 import TimelineDemo from "@/components/TimeLineEvent";
-import InfiniteMenu from "@/InfiniteMenu/InfiniteMenu";
+import InfiniteMenu from "@/gallery/InfiniteMenu/InfiniteMenu";
 import BlurText from "@/BlurText/BlurText";
 const items = [
 	{
@@ -40,15 +40,17 @@ const TeamPage = () => {
 	return (
 		<>
 			<FloatingNav navItems={navItems} />
-			<BlurText
-				text="Isn't this so cool?!"
-				delay={150}
-				animateBy="words"
-				direction="top"
-				onAnimationComplete={handleAnimationComplete}
-				className="text-2xl mb-8"
-			/>
-			<div style={{ height: "670px", position: "relative" }}>
+			<div className="mt-32 text-center flex items-center justify-center ">
+				<BlurText
+					text="Let's explore (by double tapping and move the cursor)!"
+					delay={150}
+					animateBy="words"
+					direction="top"
+					onAnimationComplete={handleAnimationComplete}
+					className="text-2xl mb-8"
+				/>
+			</div>
+			<div style={{ height: "h-screen", position: "relative" }}>
 				<InfiniteMenu items={items} />
 			</div>
 		</>
