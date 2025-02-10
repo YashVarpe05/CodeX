@@ -4,6 +4,8 @@ import FloatingNavBar from "./components/FloatingNavBar";
 import Page from "@/app/page";
 import Challanges from "./components/Challanges";
 import Event from "./components/Event";
+import RoadmapPage from "./pages/RoadmapPage";
+
 function App() {
 	return (
 		<Router>
@@ -13,6 +15,7 @@ function App() {
 					<Route path="/" element={<Page />} />
 					<Route path="/about" element={<Challanges />} />
 					<Route path="/events" element={<Event />} />
+					<Route path="/roadmap" element={<RoadmapPage />} />
 					{/* Add more routes as needed */}
 				</Routes>
 				<FloatingNavBar />

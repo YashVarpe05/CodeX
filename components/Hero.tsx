@@ -57,7 +57,7 @@ const Hero = () => {
 						words="{CodeX} Building Tomorrow's Tech Leaders;_ " //the last underline it should me blinking
 						className="text-center text-[40px] md:text-5xl lg:text-6xl"
 					/>
-					<a href="/about">
+					<a href="/form">
 						<MagicButton
 							title="Connect"
 							icon={<FaLocationArrow />}

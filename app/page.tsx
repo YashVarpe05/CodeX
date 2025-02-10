@@ -16,6 +16,8 @@ import FooterMap from "@/components/FooterMap";
 import FloatingSocial from "@/components/Floatingsocial";
 import Teamsection from "@/components/Teamsection";
 import { IconTimelineEvent } from "@tabler/icons-react";
+import Link from "next/link";
+
 const Home = () => {
 	return (
 		<main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
@@ -34,6 +36,9 @@ const Home = () => {
 
 				<Approach />
 				<Footer />
+				<Link href="/form">
+					<button className="your-existing-button-classes">Connect</button>
+				</Link>
 			</div>
 		</main>
 	);
