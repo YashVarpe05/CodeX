@@ -4,11 +4,12 @@ import { FloatingNav } from "@/components/ui/FloatingNavbar";
 import { navItems } from "@/data";
 import GlowingEffectTeamcard from "@/components/GlowingTeamcard";
 import TimelineDemo from "@/components/TimeLineEvent";
-import InfiniteMenu from "@/InfiniteMenu/InfiniteMenu";
 import GlowingEffectDemoSecond from "@/components/GlowingTeamcard";
 import TeamSection from "@/components/Team";
 import Team from "@/components/Team";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
+import Sagar from "@/components/Sagar";
+import Shubham from "@/components/Shubham";
 
 const TeamPage = () => {
 	return (
@@ -43,8 +44,6 @@ const TeamPage = () => {
 						<Team />
 					</div>
 					<div className="w-full min-h-[100vh] md:h-screen max-w-[1400px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 sm:gap-6 p-4 sm:p-4">
-						<Team />
-						<Team />
 						<Team />
 						<Team />
 					</div>
