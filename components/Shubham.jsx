@@ -19,7 +19,7 @@ import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 import { useControls } from "leva";
 
 extend({ MeshLineGeometry, MeshLineMaterial });
-useGLTF.preload("/models/pratikS.glb");
+useGLTF.preload("/models/shubham.glb");
 useTexture.preload("/strip.png");
 
 export default function App() {
@@ -80,7 +80,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 		angularDamping: 2,
 		linearDamping: 2,
 	};
-	const { nodes, materials } = useGLTF("/models/pratikS.glb");
+	const { nodes, materials } = useGLTF("/models/shubham.glb");
 	const texture = useTexture("/strip.png");
 	const { width, height } = useThree((state) => state.size);
 	const [curve] = useState(
@@ -191,7 +191,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 						<mesh geometry={nodes.card.geometry}>
 							<meshPhysicalMaterial
 								map={materials.base.map}
-								map-anisotropy={16}
+								map-anisotropy={32}
 								clearcoat={1}
 								clearcoatRoughness={0.15}
 								roughness={0.3}

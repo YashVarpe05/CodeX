@@ -10,7 +10,7 @@ import Team from "@/components/Team";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
 import Sagar from "@/components/Sagar";
 import Shubham from "@/components/Shubham";
-
+import Yash2 from "@/components/Yash";
 const TeamPage = () => {
 	return (
 		<>
@@ -27,9 +27,9 @@ const TeamPage = () => {
 					</div>
 					<div className="w-full min-h-[100vh] md:h-screen max-w-[1400px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 sm:gap-6 p-4 sm:p-4">
 						<Team />
-						<Team />
-						<Team />
-						<Team />
+						<Sagar />
+						<Shubham />
+						<Yash2 />
 					</div>
 					<div className="w-full min-h-[100vh] md:h-screen max-w-[1400px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 sm:gap-6 p-4 sm:p-4">
 						<Team />

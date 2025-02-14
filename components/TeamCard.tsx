@@ -70,7 +70,7 @@ export function TeamCard({
 					<mesh geometry={nodes.card.geometry}>
 						<meshPhysicalMaterial
 							map={materials.base.map}
-							map-anisotropy={16}
+							map-anisotropy={32}
 							clearcoat={1}
 							clearcoatRoughness={0.15}
 							roughness={0.3}

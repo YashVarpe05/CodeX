@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/team/page.jsx", "components/Team.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/team/page.jsx", "components/Team.jsx", "components/Yash.jsx", "components/Yogesh.jsx", "components/Tanishq.jsx", "components/Shubham.jsx", "components/Sayali.jsx", "components/Sagar.jsx", "components/PratikS.jsx", "components/Pratik.jsx", "components/Om.jsx", "components/Harshad.jsx", "components/Darshana.jsx"],
   "exclude": ["node_modules"]
 }
