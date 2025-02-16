@@ -11,11 +11,20 @@ import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
 import Sagar from "@/components/Sagar";
 import Shubham from "@/components/Shubham";
 import Yash2 from "@/components/Yash";
+import Sayali from "@/components/Sayali";
+import Darshana from "@/components/Darshana";
+import Harshad from "@/components/Harshad";
+import Om from "@/components/Om";
+import Pratik from "@/components/Pratik";
+import PratikS from "@/components/PratikS";
+import Tanishq from "@/components/Tanishq";
+import Yogesh from "@/components/Yogesh";
+import styles from "./team.module.css";
+
 const TeamPage = () => {
 	return (
 		<>
 			<div className="min-h-screen w-full bg-gradient-to-b from-black via-gray-900 to-black">
-				<div className="absolute inset-0 bg-[radial-gradient(circle_500px_at_50%_200px,#3e3e3e,transparent)] opacity-30"></div>
 				<div className="absolute inset-0 bg-grid-white/[0.02] bg-grid-pattern"></div>
 				<div className="relative flex items-center justify-center flex-col w-full">
 					<FloatingNav navItems={navItems} />
@@ -25,27 +34,40 @@ const TeamPage = () => {
 							className="text-center text-3xl md:text-5xl lg:text-6xl"
 						/>
 					</div>
-					<div className="w-full min-h-[100vh] md:h-screen max-w-[1400px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 sm:gap-6 p-4 sm:p-4">
-						<Team />
-						<Sagar />
-						<Shubham />
-						<Yash2 />
-					</div>
-					<div className="w-full min-h-[100vh] md:h-screen max-w-[1400px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 sm:gap-6 p-4 sm:p-4">
-						<Team />
-						<Team />
-						<Team />
-						<Team />
-					</div>
-					<div className="w-full min-h-[100vh] md:h-screen max-w-[1400px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 sm:gap-6 p-4 sm:p-4">
-						<Team />
-						<Team />
-						<Team />
-						<Team />
-					</div>
-					<div className="w-full min-h-[100vh] md:h-screen max-w-[1400px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 sm:gap-6 p-4 sm:p-4">
-						<Team />
-						<Team />
+				</div>
+
+				<div className="container mx-auto px-4 py-8 min-h-screen">
+					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 h-full">
+						<div className="aspect-square h-96">
+							<Sagar />
+						</div>
+						<div className="aspect-square h-96">
+							<Shubham />
+						</div>
+						<div className="aspect-square h-96">
+							<Sayali />
+						</div>
+						<div className="aspect-square h-96">
+							<Darshana />
+						</div>
+						<div className="aspect-square h-96">
+							<Harshad />
+						</div>
+						<div className="aspect-square h-96">
+							<Om />
+						</div>
+						<div className="aspect-square h-96">
+							<Pratik />
+						</div>
+						<div className="aspect-square h-96">
+							<PratikS />
+						</div>
+						<div className="aspect-square h-96">
+							<Tanishq />
+						</div>
+						<div className="aspect-square h-96">
+							<Yogesh />
+						</div>
 					</div>
 				</div>
 			</div>

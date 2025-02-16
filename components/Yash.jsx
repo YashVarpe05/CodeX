@@ -191,7 +191,7 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 						<mesh geometry={nodes.card.geometry}>
 							<meshPhysicalMaterial
 								map={materials.base.map}
-								map-anisotropy={32}
+								// map-anisotropy={2}
 								clearcoat={1}
 								clearcoatRoughness={0.15}
 								roughness={0.3}

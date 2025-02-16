@@ -21,30 +21,30 @@ const Teamsection = () => {
 				settings: {
 					slidesToShow: 2,
 					slidesToScroll: 1,
-				}
+				},
 			},
 			{
 				breakpoint: 1024,
 				settings: {
 					slidesToShow: 2,
 					slidesToScroll: 1,
-				}
+				},
 			},
 			{
 				breakpoint: 768,
 				settings: {
 					slidesToShow: 1,
 					slidesToScroll: 1,
-				}
+				},
 			},
 			{
 				breakpoint: 480,
 				settings: {
 					slidesToShow: 1,
 					slidesToScroll: 1,
-				}
-			}
-		]
+				},
+			},
+		],
 	};
 
 	return (
@@ -78,7 +78,7 @@ const Teamsection = () => {
 								<p className="tilted-card-demo-text m-5 px-3 py-3 bg-[#544b4b81] rounded font-semibold">
 									Kendrick Lamar - GNX
 								</p>
-								}
+							}
 							className="sm:containerHeight-[300px] sm:containerWidth-[300px] sm:imageHeight-[300px] sm:imageWidth-[300px]"
 						/>
 					</div>
@@ -105,7 +105,7 @@ const Teamsection = () => {
 								<p className="tilted-card-demo-text m-5 px-3 py-3 bg-[#544b4b81] rounded font-semibold">
 									Kendrick Lamar - GNX
 								</p>
-								}
+							}
 							className="sm:containerHeight-[300px] sm:containerWidth-[300px] sm:imageHeight-[300px] sm:imageWidth-[300px]"
 						/>
 					</div>
@@ -132,7 +132,7 @@ const Teamsection = () => {
 								<p className="tilted-card-demo-text m-5 px-3 py-3 bg-[#544b4b81] rounded font-semibold">
 									Kendrick Lamar - GNX
 								</p>
-								}
+							}
 							className="sm:containerHeight-[300px] sm:containerWidth-[300px] sm:imageHeight-[300px] sm:imageWidth-[300px]"
 						/>
 					</div>
@@ -159,7 +159,7 @@ const Teamsection = () => {
 								<p className="tilted-card-demo-text m-5 px-3 py-3 bg-[#544b4b81] rounded font-semibold">
 									Kendrick Lamar - GNX
 								</p>
-								}
+							}
 							className="sm:containerHeight-[300px] sm:containerWidth-[300px] sm:imageHeight-[300px] sm:imageWidth-[300px]"
 						/>
 					</div>
