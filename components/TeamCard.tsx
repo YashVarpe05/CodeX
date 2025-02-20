@@ -6,6 +6,7 @@ import { useGLTF } from "@react-three/drei";
 import { RigidBody, BallCollider, CuboidCollider } from "@react-three/rapier";
 import * as THREE from "three";
 import type { TeamMember } from "../data/teamData";
+import Image from "next/image";
 
 function AnimatedPinDemo() {
 	return (
@@ -22,7 +23,7 @@ function AnimatedPinDemo() {
 						<span className="text-slate-500 ">bc mc lovdya az</span>
 					</div>
 					<div className="flex flex-1 w-full  h-full rounded-lg mt-4 bg-gradient-to-br from-violet-500 via-purple-500 to-blue-500">
-						<img
+						<Image
 							className="h-full w-full  object-cover"
 							src="https://plus.unsplash.com/premium_photo-1735775899847-40dad89e6bd6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxM3x8fGVufDB8fHx8fA%3D%3D"
 							alt=""

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import styles from "./InfiniteMenu.module.css";
+import Image from "next/image";
 
 const InfiniteMenu = ({ items }) => {
 	return (
@@ -14,7 +15,7 @@ const InfiniteMenu = ({ items }) => {
 							transition={{ duration: 0.3 }}
 						>
 							<div className={styles.imageWrapper}>
-								<img
+								<Image
 									src={item.image}
 									alt={item.title}
 									className={styles.image}
