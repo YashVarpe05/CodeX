@@ -2,11 +2,6 @@
 
 import { FloatingNav } from "@/components/ui/FloatingNavbar";
 import { navItems } from "@/data";
-import GlowingEffectTeamcard from "@/components/GlowingTeamcard";
-import TimelineDemo from "@/components/TimeLineEvent";
-import GlowingEffectDemoSecond from "@/components/GlowingTeamcard";
-import TeamSection from "@/components/Team";
-import Team from "@/components/Team";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
 import Sagar from "@/components/Sagar";
 import Shubham from "@/components/Shubham";
@@ -35,42 +30,27 @@ const TeamPage = () => {
 						/>
 					</div>
 				</div>
-
-				<div className="container mx-auto px-4 py-8 min-h-screen">
-					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 h-full">
-						<div className="aspect-square h-96">
-							<Sagar />
-						</div>
-						<div className="aspect-square h-96">
-							<Shubham />
-						</div>
-						<div className="aspect-square h-96">
-							<Sayali />
-						</div>
-						<div className="aspect-square h-96">
-							<Darshana />
-						</div>
-						<div className="aspect-square h-96">
-							<Harshad />
-						</div>
-						<div className="aspect-square h-96">
-							<Om />
-						</div>
-						<div className="aspect-square h-96">
-							<Pratik />
-						</div>
-						<div className="aspect-square h-96">
-							<PratikS />
-						</div>
-						<div className="aspect-square h-96">
-							<Tanishq />
-						</div>
-						<div className="aspect-square h-96">
-							<Yogesh />
-						</div>
+				<div className="flex flex-col items-center justify-center w-full">
+					{/* Card Section */}
+					<div className="w-[80vw] h-[80vh] flex overflow-hidden items-center justify-center ">
+						<Sagar />
+						<Shubham />
+						<Sayali />
+						<Darshana />
+					</div>
+					<div className="w-[80vw] h-[80vh] flex overflow-hidden items-center justify-center ">
+						<Harshad />
+						<Om />
+						<Pratik />
+						<PratikS />
+					</div>
+					<div className="w-[80vw] h-[80vh] flex overflow-hidden items-center justify-center ">
+						<Tanishq />
+						<Yogesh />
 					</div>
 				</div>
 			</div>
+			{/* </div> */}
 		</>
 	);
 };
