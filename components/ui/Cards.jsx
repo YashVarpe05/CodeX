@@ -25,4 +25,6 @@ const Card = forwardRef(({ id, frontSrc, frontAlt, backText }, ref) => {
 	);
 });
 
+Card.displayName = "Card";
+
 export default Card;

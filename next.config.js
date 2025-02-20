@@ -1,19 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	images: {
-		domains: ["images.unsplash.com", "assets.aceternity.com"],
+		domains: [
+			"images.unsplash.com",
+			"assets.aceternity.com",
+			// Add other domains as needed
+		],
 		remotePatterns: [
 			{
 				protocol: "https",
-				hostname: "images.unsplash.com",
-				port: "",
-				pathname: "/**",
-			},
-			{
-				protocol: "https",
-				hostname: "assets.aceternity.com",
-				port: "",
-				pathname: "/**",
+				hostname: "**",
 			},
 		],
 	},

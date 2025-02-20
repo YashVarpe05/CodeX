@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 import { companies, testimonials } from "@/data";
 import { InfiniteMovingCards } from "@/components/ui/InfiniteCards";
@@ -19,8 +20,11 @@ const Clients = () => {
 					className="h-[50vh] md:h-[30rem] rounded-md flex flex-col antialiased  items-center justify-center relative overflow-hidden"
 				>
 					<InfiniteMovingCards
-						items={testimonials}
-						direction="right"
+						items={testimonials.map(item => ({
+							...item,
+							img: "" // Adding empty img property to satisfy type requirement
+						}))}
+						direction="right" 
 						speed="slow"
 					/>
 				</div>
@@ -29,15 +33,18 @@ const Clients = () => {
 					{companies.map((company) => (
 						<React.Fragment key={company.id}>
 							<div className="flex md:max-w-60 max-w-32 gap-2">
-								<img
+								<Image
 									src={company.img}
 									alt={company.name}
+									width={40}
+									height={40}
 									className="md:w-10 w-5"
 								/>
-								<img
+								<Image
 									src={company.nameImg}
 									alt={company.name}
 									width={company.id === 4 || company.id === 5 ? 100 : 150}
+									height={50}
 									className="md:w-24 w-20"
 								/>
 							</div>
