@@ -10,30 +10,30 @@ const items = [
 	{
 		image: "https://picsum.photos/800/600?random=1",
 		link: "https://google.com/",
-		// title: "Digital Innovation",
+		title: "Digital Innovation",
 		category: "Technology",
-		// description: "Exploring the future of digital transformation",
+		description: "Exploring the future of digital transformation",
 	},
 	{
 		image: "https://picsum.photos/800/600?random=2",
 		link: "https://google.com/",
-		// title: "Creative Design",
+		title: "Creative Design",
 		category: "Art",
-		// description: "Where creativity meets functionality",
+		description: "Where creativity meets functionality",
 	},
 	{
 		image: "https://picsum.photos/800/600?random=3",
 		link: "https://google.com/",
-		// title: "Modern Architecture",
+		title: "Modern Architecture",
 		category: "Design",
-		// description: "Stunning architectural masterpieces",
+		description: "Stunning architectural masterpieces",
 	},
 	{
 		image: "https://picsum.photos/800/600?random=4",
 		link: "https://google.com/",
-		// title: "Nature's Beauty",
+		title: "Nature's Beauty",
 		category: "Photography",
-		// description: "Capturing moments in time",
+		description: "Capturing moments in time",
 	},
 ];
 
