@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import FloatingNavBar from "./components/FloatingNavBar";
 import Page from "@/app/page";
-import Challanges from "./components/Challanges";
+import Challanges from "@/app/challenges/components/CodeChallenge";
 import Event from "./components/Event";
-import RoadmapPage from "./pages/RoadmapPage";
+import RoadmapPage from "@/app/challenges/Roadmap";
 
 function App() {
 	return (
