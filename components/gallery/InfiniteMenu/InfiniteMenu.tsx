@@ -2,7 +2,19 @@ import { motion } from "framer-motion";
 import styles from "./InfiniteMenu.module.css";
 import Image from "next/image";
 
-const InfiniteMenu = ({ items }) => {
+interface MenuItem {
+	image: string;
+	link: string;
+	title: string;
+	category: string;
+	description: string;
+}
+
+interface InfiniteMenuProps {
+	items: MenuItem[];
+}
+
+const InfiniteMenu = ({ items }: InfiniteMenuProps) => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.scroll}>
