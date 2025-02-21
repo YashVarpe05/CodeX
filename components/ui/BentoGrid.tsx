@@ -4,19 +4,10 @@ import { IoCopyOutline } from "react-icons/io5";
 import Lottie from "react-lottie";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-
-<<<<<<< HEAD
 import { BackgroundGradientAnimation } from "@/components/ui/GradientBg";
 import GridGlobe from "@/components/ui/GridGlobe";
 import animationData from "@/data/confetti.json";
 import MagicButton from "@/components/MagicButton";
-=======
-import { BackgroundGradientAnimation } from "./GradientBg";
-import GridGlobe from "./GridGlobe";
-import animationData from "@/data/confetti.json";
-import MagicButton from "../MagicButton";
-import Image from "next/image";
->>>>>>> 665e10348d5d61c2ed3f39e98f8aab70f4fd58ce
 
 export const BentoGrid = ({
 	className,
@@ -28,10 +19,6 @@ export const BentoGrid = ({
 	return (
 		<div
 			className={cn(
-<<<<<<< HEAD
-=======
-				// change gap-4 to gap-8, change grid-cols-3 to grid-cols-5, remove md:auto-rows-[18rem], add responsive code
->>>>>>> 665e10348d5d61c2ed3f39e98f8aab70f4fd58ce
 				"grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 md:grid-row-7 gap-4 lg:gap-8 mx-auto",
 				className
 			)}
@@ -103,13 +90,9 @@ export const BentoGridItem = ({
 						<Image
 							src={img}
 							alt={img}
-<<<<<<< HEAD
-							width={400}
-							height={300}
-							className="w-full h-full object-cover"
-=======
-							className={cn(imgClassName, "object-cover object-center ")}
->>>>>>> 665e10348d5d61c2ed3f39e98f8aab70f4fd58ce
+							width={500}
+							height={500}
+							className={`w-full h-full object-cover ${imgClassName}`}
 						/>
 					)}
 				</div>
@@ -122,12 +105,8 @@ export const BentoGridItem = ({
 						<Image
 							src={spareImg}
 							alt={spareImg}
-<<<<<<< HEAD
-							width={220}
-							height={220}
-=======
-							//   width={220}
->>>>>>> 665e10348d5d61c2ed3f39e98f8aab70f4fd58ce
+							width={500}
+							height={500}
 							className="object-cover object-center w-full h-full"
 						/>
 					)}
@@ -201,11 +180,8 @@ export const BentoGridItem = ({
 									copied ? "block" : "block"
 								}`}
 							>
-<<<<<<< HEAD
 								{/* <img src="/confetti.gif" alt="confetti" /> */}
-=======
-								{/* <Image src="/confetti.gif" alt="confetti" /> */}
->>>>>>> 665e10348d5d61c2ed3f39e98f8aab70f4fd58ce
+
 								<Lottie options={defaultOptions} height={200} width={400} />
 							</div>
 

@@ -6,7 +6,7 @@ import { FaLocationArrow } from "react-icons/fa6";
 
 import { projects } from "@/data";
 import { PinContainer } from "./ui/Pin";
-import Image from "next/image";
+import { Project } from "@/types";
 
 const RecentProjects = () => {
 	return (
@@ -30,7 +30,6 @@ const RecentProjects = () => {
 									className="relative w-full h-full overflow-hidden lg:rounded-3xl"
 									style={{ backgroundColor: "#13162D" }}
 								>
-<<<<<<< HEAD
 									<Image
 										src="/bg.png"
 										alt="bgimg"
@@ -38,14 +37,10 @@ const RecentProjects = () => {
 										height={1080}
 										className="w-full h-full object-cover"
 									/>
-=======
-									<Image src="/bg.png" alt="bgimg" />
->>>>>>> 665e10348d5d61c2ed3f39e98f8aab70f4fd58ce
 								</div>
 								<Image
 									src={item.img}
 									alt="cover"
-<<<<<<< HEAD
 									width={400}
 									height={300}
 									className="z-10 absolute bottom-0 w-full h-full object-cover"
@@ -56,9 +51,6 @@ const RecentProjects = () => {
 									width={40}
 									height={40}
 									className="absolute top-4 left-4 w-10 h-10"
-=======
-									className="z-10 absolute bottom-0"
->>>>>>> 665e10348d5d61c2ed3f39e98f8aab70f4fd58ce
 								/>
 							</div>
 
@@ -86,7 +78,6 @@ const RecentProjects = () => {
 												transform: `translateX(-${5 * index + 2}px)`,
 											}}
 										>
-<<<<<<< HEAD
 											<Image
 												src={icon}
 												alt="icon5"
@@ -94,9 +85,6 @@ const RecentProjects = () => {
 												height={24}
 												className="p-2"
 											/>
-=======
-											<Image src={icon} alt="icon5" className="p-2" />
->>>>>>> 665e10348d5d61c2ed3f39e98f8aab70f4fd58ce
 										</div>
 									))}
 								</div>

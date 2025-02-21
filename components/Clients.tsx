@@ -4,12 +4,8 @@ import React from "react";
 import Image from "next/image";
 
 import { companies, testimonials } from "@/data";
-<<<<<<< HEAD
 import { InfiniteMovingCards } from "@/components/ui/InfiniteCards";
-=======
-import { InfiniteMovingCards } from "./ui/InfiniteCards";
-import Image from "next/image";
->>>>>>> 665e10348d5d61c2ed3f39e98f8aab70f4fd58ce
+
 
 const Clients = () => {
 	return (

@@ -1,8 +1,88 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import React, { useMemo, useRef } from "react";
+import React, { useMemo, useRef, useCallback } from "react";
 import * as THREE from "three";
+
+interface ShaderProps {
+	source: string;
+	uniforms: {
+		[key: string]: {
+			value: number[] | number[][] | number;
+			type: string;
+		};
+	};
+	maxFps?: number;
+}
+
+interface Uniforms {
+	[key: string]: {
+		value: number[] | number[][] | number;
+		type: string;
+	};
+}
+
+const ShaderMaterial = ({ source, uniforms, maxFps = 60 }: ShaderProps) => {
+	const { size } = useThree();
+	const ref = useRef<THREE.Mesh | null>(null);
+	let lastFrameTime = 0;
+
+	useFrame(({ clock }) => {
+		if (!ref.current) return;
+		const timestamp = clock.getElapsedTime();
+		if (timestamp - lastFrameTime < 1 / maxFps) {
+			return;
+		}
+		lastFrameTime = timestamp;
+		const material = ref.current.material as THREE.ShaderMaterial;
+		const timeLocation = material.uniforms.u_time;
+		timeLocation.value = timestamp;
+	});
+
+	const getUniforms = useCallback(() => {
+		const preparedUniforms: { [key: string]: { value: any; type?: string } } =
+			{};
+		for (const uniformName in uniforms) {
+			preparedUniforms[uniformName] = uniforms[uniformName];
+		}
+		preparedUniforms["u_time"] = { value: 0, type: "1f" };
+		preparedUniforms["u_resolution"] = {
+			value: new THREE.Vector2(size.width * 2, size.height * 2),
+		};
+		return preparedUniforms;
+	}, [uniforms, size]);
+
+	const material = useMemo(() => {
+		return new THREE.ShaderMaterial({
+			vertexShader: `
+				precision mediump float;
+				in vec2 coordinates;
+				uniform vec2 u_resolution;
+				out vec2 fragCoord;
+				void main() {
+					float x = position.x;
+					float y = position.y;
+					gl_Position = vec4(x, y, 0.0, 1.0);
+					fragCoord = (position.xy + vec2(1.0)) * 0.5 * u_resolution;
+					fragCoord.y = u_resolution.y - fragCoord.y;
+				}
+			`,
+			fragmentShader: source,
+			uniforms: getUniforms(),
+			glslVersion: THREE.GLSL3,
+			blending: THREE.CustomBlending,
+			blendSrc: THREE.SrcAlphaFactor,
+			blendDst: THREE.OneFactor,
+		});
+	}, [source, getUniforms]);
+
+	return (
+		<mesh ref={ref}>
+			<planeGeometry args={[2, 2]} />
+			<primitive object={material} attach="material" />
+		</mesh>
+	);
+};
 
 export const CanvasRevealEffect = ({
 	animationSpeed = 0.4,
@@ -26,20 +106,46 @@ export const CanvasRevealEffect = ({
 	return (
 		<div className={cn("h-full relative bg-white w-full", containerClassName)}>
 			<div className="h-full w-full">
-				<DotMatrix
-					colors={colors ?? [[0, 255, 255]]}
-					dotSize={dotSize ?? 3}
-					opacities={
-						opacities ?? [0.3, 0.3, 0.3, 0.5, 0.5, 0.5, 0.8, 0.8, 0.8, 1]
-					}
-					shader={`
-              float animation_speed_factor = ${animationSpeed.toFixed(1)};
-              float intro_offset = distance(u_resolution / 2.0 / u_total_size, st2) * 0.01 + (random(st2) * 0.15);
-              opacity *= step(intro_offset, u_time * animation_speed_factor);
-              opacity *= clamp((1.0 - step(intro_offset + 0.1, u_time * animation_speed_factor)) * 1.25, 1.0, 1.25);
-            `}
-					center={["x", "y"]}
-				/>
+				<Canvas>
+					<ShaderMaterial
+						source={`
+							precision mediump float;
+							in vec2 fragCoord;
+							uniform float u_time;
+							uniform float u_opacities[10];
+							uniform vec3 u_colors[6];
+							uniform float u_total_size;
+							uniform float u_dot_size;
+							uniform vec2 u_resolution;
+							out vec4 fragColor;
+
+							float PHI = 1.61803398874989484820459;
+							
+							float random(vec2 xy) {
+								return fract(tan(distance(xy * PHI, xy) * 0.5) * xy.x);
+							}
+
+							void main() {
+								vec2 st = fragCoord.xy;
+								float opacity = 1.0;
+								vec2 st2 = vec2(int(st.x / u_total_size), int(st.y / u_total_size));
+								float animation_speed_factor = ${animationSpeed.toFixed(1)};
+								float intro_offset = distance(u_resolution / 2.0 / u_total_size, st2) * 0.01 + (random(st2) * 0.15);
+								opacity *= step(intro_offset, u_time * animation_speed_factor);
+								opacity *= clamp((1.0 - step(intro_offset + 0.1, u_time * animation_speed_factor)) * 1.25, 1.0, 1.25);
+								fragColor = vec4(1.0, 1.0, 1.0, opacity);
+							}
+						`}
+						uniforms={{
+							u_time: { value: 0, type: "1f" },
+							u_opacities: { value: opacities, type: "1fv" },
+							u_colors: { value: colors, type: "3fv" },
+							u_total_size: { value: 4, type: "1f" },
+							u_dot_size: { value: dotSize || 3, type: "1f" },
+						}}
+						maxFps={60}
+					/>
+				</Canvas>
 			</div>
 			{showGradient && (
 				<div className="absolute inset-0 bg-gradient-to-t from-gray-950 to-[84%]" />
@@ -119,7 +225,7 @@ const DotMatrix: React.FC<DotMatrixProps> = ({
 	}, [colors, opacities, totalSize, dotSize]);
 
 	return (
-		<Shader
+		<ShaderMaterial
 			source={`
         precision mediump float;
         in vec2 fragCoord;
@@ -174,145 +280,3 @@ const DotMatrix: React.FC<DotMatrixProps> = ({
 		/>
 	);
 };
-
-type Uniforms = {
-	[key: string]: {
-		value: number[] | number[][] | number;
-		type: string;
-	};
-};
-const ShaderMaterial = ({
-	source,
-	uniforms,
-	maxFps = 60,
-}: {
-	source: string;
-	hovered?: boolean;
-	maxFps?: number;
-	uniforms: Uniforms;
-}) => {
-	const { size } = useThree();
-	const ref = useRef<THREE.Mesh>();
-	let lastFrameTime = 0;
-
-	useFrame(({ clock }) => {
-		if (!ref.current) return;
-		const timestamp = clock.getElapsedTime();
-		if (timestamp - lastFrameTime < 1 / maxFps) {
-			return;
-		}
-		lastFrameTime = timestamp;
-
-		const material: any = ref.current.material;
-		const timeLocation = material.uniforms.u_time;
-		timeLocation.value = timestamp;
-	});
-
-	const getUniforms = () => {
-		const preparedUniforms: any = {};
-
-		for (const uniformName in uniforms) {
-			const uniform: any = uniforms[uniformName];
-
-			switch (uniform.type) {
-				case "uniform1f":
-					preparedUniforms[uniformName] = { value: uniform.value, type: "1f" };
-					break;
-				case "uniform3f":
-					preparedUniforms[uniformName] = {
-						value: new THREE.Vector3().fromArray(uniform.value),
-						type: "3f",
-					};
-					break;
-				case "uniform1fv":
-					preparedUniforms[uniformName] = { value: uniform.value, type: "1fv" };
-					break;
-				case "uniform3fv":
-					preparedUniforms[uniformName] = {
-						value: uniform.value.map((v: number[]) =>
-							new THREE.Vector3().fromArray(v)
-						),
-						type: "3fv",
-					};
-					break;
-				case "uniform2f":
-					preparedUniforms[uniformName] = {
-						value: new THREE.Vector2().fromArray(uniform.value),
-						type: "2f",
-					};
-					break;
-				default:
-					console.error(`Invalid uniform type for '${uniformName}'.`);
-					break;
-			}
-		}
-
-		preparedUniforms["u_time"] = { value: 0, type: "1f" };
-		preparedUniforms["u_resolution"] = {
-			value: new THREE.Vector2(size.width * 2, size.height * 2),
-		}; // Initialize u_resolution
-		return preparedUniforms;
-	};
-
-	// Shader material
-	const material = useMemo(() => {
-		const materialObject = new THREE.ShaderMaterial({
-			vertexShader: `
-      precision mediump float;
-      in vec2 coordinates;
-      uniform vec2 u_resolution;
-      out vec2 fragCoord;
-      void main(){
-        float x = position.x;
-        float y = position.y;
-        gl_Position = vec4(x, y, 0.0, 1.0);
-        fragCoord = (position.xy + vec2(1.0)) * 0.5 * u_resolution;
-        fragCoord.y = u_resolution.y - fragCoord.y;
-      }
-      `,
-			fragmentShader: source,
-			uniforms: getUniforms(),
-			glslVersion: THREE.GLSL3,
-			blending: THREE.CustomBlending,
-			blendSrc: THREE.SrcAlphaFactor,
-			blendDst: THREE.OneFactor,
-		});
-
-		return materialObject;
-	}, [size.width, size.height, source]);
-
-	return (
-		<mesh ref={ref as any}>
-			<planeGeometry args={[2, 2]} />
-			<primitive object={material} attach="material" />
-		</mesh>
-	);
-};
-
-const Shader: React.FC<ShaderProps> = ({ source, uniforms, maxFps = 60 }) => {
-	const uniformsMemo = useMemo(() => {
-		const preparedUniforms: any = {};
-		// Copy uniforms to prepared uniforms
-		for (const uniformName in uniforms) {
-			preparedUniforms[uniformName] = uniforms[uniformName];
-		}
-		preparedUniforms["u_time"] = { value: 0, type: "1f" };
-		return preparedUniforms;
-	}, [uniforms]);
-
-	return (
-		<Canvas className="absolute inset-0  h-full w-full">
-			<ShaderMaterial source={source} uniforms={uniformsMemo} maxFps={maxFps} />
-		</Canvas>
-	);
-};
-interface ShaderProps {
-	source: string;
-	uniforms: {
-		[key: string]: {
-			value: number[] | number[][] | number;
-			type: string;
-		};
-	};
-	maxFps?: number;
-}

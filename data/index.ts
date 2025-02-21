@@ -1,3 +1,5 @@
+import { Project } from "@/types";
+
 export const navItems = [
 	{ name: "Home", link: "/" },
 	{ name: "Events", link: "/events" },
@@ -70,38 +72,33 @@ export const gridItems = [
 	},
 ];
 
-export const projects = [
+export const projects: Project[] = [
 	{
 		id: 1,
 		title: "3D Solar System Planets to Explore",
 		des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
 		img: "/p1.svg",
+		logo: "/re.svg",
 		iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
 		link: "/ui.earth.com",
 	},
 	{
 		id: 2,
-		title: "Yoom - Video Conferencing App",
-		des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
+		title: "Immersive 3D Portfolio Experience",
+		des: "Step into a unique portfolio showcase featuring interactive 3D elements and stunning visual effects.",
 		img: "/p2.svg",
-		iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-		link: "/ui.yoom.com",
+		logo: "/tail.svg",
+		iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
+		link: "/ui.portfolio.com",
 	},
 	{
 		id: 3,
-		title: "AI Image SaaS - Canva Application",
-		des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
+		title: "Dynamic Weather Dashboard",
+		des: "Real-time weather visualization with beautiful animations and comprehensive meteorological data.",
 		img: "/p3.svg",
-		iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-		link: "/ui.aiimg.com",
-	},
-	{
-		id: 4,
-		title: "Animated Apple Iphone 3D Website",
-		des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-		img: "/p4.svg",
-		iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-		link: "/ui.apple.com",
+		logo: "/ts.svg",
+		iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
+		link: "/ui.weather.com",
 	},
 ];
 

@@ -395,22 +395,34 @@ const GridGlobe = () => {
 		},
 	];
 
-	const globeRef = useRef(null);
+	const globeRef = useRef<any>(null);
 
 	const startAnimation = useCallback(() => {
 		// animation logic
+	}, []);
+
+	useEffect(() => {
+		if (globeRef.current && sampleArcs.length) {
+			globeRef.current
+				.hexPolygonsData(sampleArcs)
+				.hexPolygonResolution(3)
+				.hexPolygonMargin(0.7)
+				.showAtmosphere(globeConfig.showAtmosphere)
+				.atmosphereColor(globeConfig.atmosphereColor)
+				.atmosphereAltitude(globeConfig.atmosphereAltitude)
+				.hexPolygonColor(() => globeConfig.polygonColor);
+			startAnimation();
+		}
 	}, [
+		startAnimation,
 		globeConfig.atmosphereAltitude,
 		globeConfig.atmosphereColor,
 		globeConfig.polygonColor,
 		globeConfig.showAtmosphere,
+		sampleArcs.length,
+		globeRef,
+		
 	]);
-
-	useEffect(() => {
-		if (globeRef.current && sampleArcs.length) {
-			// effect logic
-		}
-	}, [sampleArcs.length, globeRef]);
 
 	return (
 		// remove dark:bg-black bg-white h-screen md:h-auto  w-full flex-row py-20
@@ -443,11 +455,7 @@ const GridGlobe = () => {
         </motion.div> */}
 				<div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" />
 				<div className="absolute w-full h-72 md:h-full z-10">
-					<World 
-						data={sampleArcs} 
-						globeConfig={globeConfig}
-						ref={globeRef}
-					/>
+					<World data={sampleArcs} globeConfig={globeConfig} />
 				</div>
 			</div>
 		</div>
