@@ -3,10 +3,19 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { developmentPaths } from "@/data/roadmapData";
 
-export default function Roadmap() {
-	const [selectedPath, setSelectedPath] = useState("frontend");
+interface RoadmapNode {
+	id: string;
+	title: string;
+	description?: string;
+	status?: string;
+	children?: RoadmapNode[];
+}
 
-	const renderNode = (node: (typeof developmentPaths)["frontend"]) => (
+export default function Roadmap() {
+	const [selectedPath, setSelectedPath] =
+		useState<keyof typeof developmentPaths>("frontend");
+
+	const renderNode = (node: RoadmapNode) => (
 		<motion.div
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
@@ -45,7 +54,9 @@ export default function Roadmap() {
 						key={key}
 						whileHover={{ scale: 1.05 }}
 						whileTap={{ scale: 0.95 }}
-						onClick={() => setSelectedPath(key)}
+						onClick={() =>
+							setSelectedPath(key as keyof typeof developmentPaths)
+						}
 						className={`px-6 py-3 rounded-xl ${
 							selectedPath === key ? "bg-blue-600" : "bg-gray-700/50"
 						}`}
