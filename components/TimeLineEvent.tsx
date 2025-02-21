@@ -1,6 +1,11 @@
 import Image from "next/image";
 import React from "react";
-import { Timeline } from "@/components/ui/timeline";
+import dynamic from "next/dynamic";
+
+const Timeline = dynamic(
+	() => import("@/components/ui/timeline").then((mod) => mod.Timeline),
+	{ ssr: false }
+);
 
 function TimelineDemo() {
 	const data = [
@@ -9,7 +14,7 @@ function TimelineDemo() {
 			content: (
 				<div>
 					<p className="text-neutral-800 dark:text-neutral-200 text-sm font-semibold md:text-sm  mb-8">
-						Built and launched Codex 
+						Built and launched Codex
 					</p>
 					<div className="grid grid-cols-2 gap-4">
 						<Image

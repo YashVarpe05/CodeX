@@ -1,10 +1,16 @@
 import React from "react";
-import TeamCard from "@/TiltedCard/TiltedCard";
+import dynamic from "next/dynamic";
 import ShinyText from "@/ShinyText/ShinyText";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import FloatingDockDemo from "./Floatingsocial";
+
+const TeamCard = dynamic(() => import("@/TiltedCard/TiltedCard"), {
+	ssr: false,
+});
+const FloatingDockDemo = dynamic(() => import("./Floatingsocial"), {
+	ssr: false,
+});
 
 const Teamsection = () => {
 	const settings = {

@@ -1,10 +1,18 @@
 "use client";
 
-import { FloatingNav } from "@/components/ui/FloatingNavbar";
+import dynamic from "next/dynamic";
 import { navItems } from "@/data";
-import BlurText from "@/BlurText/BlurText";
-import InfiniteMenu from "@/gallery/InfiniteMenu/InfiniteMenu";
 import { motion } from "framer-motion";
+
+const BlurText = dynamic(() => import("@/BlurText/BlurText"), { ssr: false });
+const InfiniteMenu = dynamic(
+	() => import("@/gallery/InfiniteMenu/InfiniteMenu"),
+	{ ssr: false }
+);
+const FloatingNav = dynamic(
+	() => import("@/components/ui/FloatingNavbar").then((mod) => mod.FloatingNav),
+	{ ssr: false }
+);
 
 const items = [
 	{

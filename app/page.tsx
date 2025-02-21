@@ -1,15 +1,21 @@
 "use client";
+import dynamic from "next/dynamic";
 import { navItems } from "@/data";
 import TimeLineEvent from "@/components/TimeLineEvent";
-import Hero from "@/components/Hero";
-import Grid from "@/components/Grid";
 import Footer from "@/components/Footer";
 import Clients from "@/components/Clients";
 import Approach from "@/components/Approach";
 import Experience from "@/components/Experience";
 import { FloatingNav } from "@/components/ui/FloatingNavbar";
-import Teamsection from "@/components/Teamsection";
 import Link from "next/link";
+
+// Dynamically import components that use browser APIs
+const Hero = dynamic(() => import("@/components/Hero"), { ssr: false });
+const Grid = dynamic(() => import("@/components/Grid"), { ssr: false });
+const Teamsection = dynamic(() => import("@/components/Teamsection"), {
+	ssr: false,
+});
+
 const Home = () => {
 	return (
 		<main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">

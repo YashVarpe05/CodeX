@@ -1,5 +1,5 @@
 import React from "react";
-import { FloatingDock } from "@/components/ui/floating-dock";
+import dynamic from "next/dynamic";
 import {
 	IconBrandGithub,
 	IconBrandX,
@@ -13,6 +13,11 @@ import {
 } from "@tabler/icons-react";
 import Image from "next/image";
 import { title } from "process";
+
+const FloatingDock = dynamic(
+	() => import("@/components/ui/floating-dock").then((mod) => mod.FloatingDock),
+	{ ssr: false }
+);
 
 function FloatingDockDemo() {
 	const links = [

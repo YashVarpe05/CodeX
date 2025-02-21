@@ -2,10 +2,16 @@
 
 import React from "react";
 import Image from "next/image";
-
+import dynamic from "next/dynamic";
 import { companies, testimonials } from "@/data";
-import { InfiniteMovingCards } from "@/components/ui/InfiniteCards";
 
+const InfiniteMovingCards = dynamic(
+	() =>
+		import("@/components/ui/InfiniteCards").then(
+			(mod) => mod.InfiniteMovingCards
+		),
+	{ ssr: false }
+);
 
 const Clients = () => {
 	return (
@@ -21,11 +27,11 @@ const Clients = () => {
 					className="h-[50vh] md:h-[30rem] rounded-md flex flex-col antialiased  items-center justify-center relative overflow-hidden"
 				>
 					<InfiniteMovingCards
-						items={testimonials.map(item => ({
+						items={testimonials.map((item) => ({
 							...item,
-							img: "" // Adding empty img property to satisfy type requirement
+							img: "", // Adding empty img property to satisfy type requirement
 						}))}
-						direction="right" 
+						direction="right"
 						speed="slow"
 					/>
 				</div>

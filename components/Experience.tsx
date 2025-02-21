@@ -1,7 +1,12 @@
 import React from "react";
 import { workExperience } from "@/data";
-import { Button } from "./ui/MovingBorders";
+import dynamic from "next/dynamic";
 import Image from "next/image";
+
+const Button = dynamic(
+	() => import("./ui/MovingBorders").then((mod) => mod.Button),
+	{ ssr: false }
+);
 
 const Experience = () => {
 	return (
