@@ -63,7 +63,7 @@ title="Marketing Head"  iconUrl="https://codexclubit.vercel.app/img/logo.png"
 handle="Tanishq"
 status="Online"
 contactText="Contact Me"
-avatarUrl="./Team/Tanu.png"
+avatarUrl="./Team/tanu.png"
 showUserInfo={true}
     enableTilt={true}
 
